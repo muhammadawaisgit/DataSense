@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Illuminate\Support\Facades\Auth;
 class MasterAdminMiddleware
 {
     /**
@@ -15,6 +15,9 @@ class MasterAdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        if (Auth::guard('master-admin')->check()) {
+            return $next($request);
+        }
+        return redirect()->route('master-admin.login');
     }
 }

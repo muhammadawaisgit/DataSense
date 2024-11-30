@@ -1,0 +1,53 @@
+::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.login-container {
+    background: url('../images/bg/login-bg.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.login-card {
+    background: linear-gradient(127.09deg, rgba(6, 11, 40, 0.94) 19.41%, rgba(10, 14, 35, 0.49) 76.65%);
+    border-radius: 20px;
+    backdrop-filter: blur(120px);
+}
+
+.login-input {
+    background: linear-gradient(127.09deg, rgba(6, 11, 40, 0.94) 19.41%, rgba(10, 14, 35, 0.49) 76.65%);
+    border: 1px solid rgba(226, 232, 240, 0.3);
+    color: white;
+}
+
+.login-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.login-checkbox {
+    background: transparent;
+    border: 1px solid rgba(226, 232, 240, 0.3);
+    color: white;
+}
+
+.login-btn {
+    background: linear-gradient(123.64deg, #4318FF -22.49%, #9F7AEA 74.33%);
+    border: none;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.login-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    color: white;
+}
+
+.login-link {
+    color: #4318FF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-link:hover {
+    color: #9F7AEA;
+}
