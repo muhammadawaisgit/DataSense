@@ -5,12 +5,15 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class MasterAdmin extends Authenticatable
 {
     use Notifiable;
 
+    public $timestamps = false;
+
     protected $fillable = [
-        'full_name',
+        'name',
         'email', 
         'password',
     ];
@@ -28,5 +31,10 @@ class MasterAdmin extends Authenticatable
     public function userAdmins()
     {
         return $this->hasMany(UserAdmin::class);
+    }
+
+    public static function create(array $attributes = [])
+    {
+        return parent::create($attributes);
     }
 }
