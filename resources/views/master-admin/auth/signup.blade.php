@@ -29,13 +29,40 @@
                         
                         <div class="mb-4">
                             <label class="form-label text-white">Password</label>
-                            <input type="password" name="password" class="form-control text-white login-input" placeholder="Your password">
+                            <div class="input-group">
+                                <input type="password" name="password" class="form-control text-white login-input" placeholder="Your password">
+                                <button class="btn login-input text-white" type="button" onclick="togglePassword('password')">
+                                    <i class="fas fa-eye" id="password-icon"></i>
+                                </button>
+                            </div>
                         </div>
 
                         <div class="mb-4">
                             <label class="form-label text-white">Confirm Password</label>
-                            <input type="password" name="password_confirmation" class="form-control text-white login-input" placeholder="Confirm your password">
+                            <div class="input-group">
+                                <input type="password" name="password_confirmation" class="form-control text-white login-input" placeholder="Confirm your password">
+                                <button class="btn login-input text-white" type="button" onclick="togglePassword('password_confirmation')">
+                                    <i class="fas fa-eye" id="password_confirmation-icon"></i>
+                                </button>
+                            </div>
                         </div>
+
+                        <script>
+                            function togglePassword(field) {
+                                const input = document.querySelector(`input[name="${field}"]`);
+                                const icon = document.getElementById(`${field}-icon`);
+                                
+                                if (input.type === 'password') {
+                                    input.type = 'text';
+                                    icon.classList.remove('fa-eye');
+                                    icon.classList.add('fa-eye-slash');
+                                } else {
+                                    input.type = 'password';
+                                    icon.classList.remove('fa-eye-slash');
+                                    icon.classList.add('fa-eye');
+                                }
+                            }
+                        </script>
 
                         <div class="mb-4">
                             <button type="submit" class="btn login-btn w-100 py-2 mb-4">

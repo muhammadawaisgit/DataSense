@@ -77,12 +77,12 @@ return [
 
         'master_admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\MasterAdmin::class,
+            'model' => env('AUTH_MODEL', App\Models\MasterAdmin::class),
         ],
 
         'user_admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\UserAdmin::class,
+            'model' => env('AUTH_MODEL', App\Models\UserAdmin::class),
         ],
 
         // 'users' => [

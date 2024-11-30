@@ -37,7 +37,11 @@ class AuthController extends Controller
             'email' => 'required|email|unique:master_admins',
             'password' => 'required|confirmed',
         ]);
-        MasterAdmin::create($credentials);
-        return redirect()->route('master-admin.login')->with('success', 'Account created successfully');
+        $masterAdmin = MasterAdmin::create($credentials);
+        
+        if($masterAdmin) {
+            return redirect()->route('master-admin.login')->with('success', 'Account created successfully');
+        }
+        return redirect()->back()->withErrors(['message' => 'Failed to create account']);
     }
 }

@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 
 class MasterAdmin extends Authenticatable
 {
-    use Notifiable;
+    use HasFactory, Notifiable;
 
     public $timestamps = false;
 
@@ -24,17 +26,6 @@ class MasterAdmin extends Authenticatable
     ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-    public function userAdmins()
-    {
-        return $this->hasMany(UserAdmin::class);
-    }
-
-    public static function create(array $attributes = [])
-    {
-        return parent::create($attributes);
-    }
 }
