@@ -1,37 +1,34 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Dashboard</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#"><i class="fas fa-home"></i> Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-table"></i> Tables</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-chart-bar"></i> Charts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-cog"></i> Settings</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> Admin
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle"></i> Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
+<div class="dashboard-header d-flex justify-content-between align-items-center px-4 py-3">
+    <div class="dashboard-header-left">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="#" class="text-white-50 text-decoration-none">Pages</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Dashboard</li>
+            </ol>
+        </nav>
+        <h4 class="mb-0 text-white">Dashboard</h4>
+    </div>
+    
+    <div class="dashboard-header-right d-flex align-items-center">
+        <div class="search-container me-3">
+            <div class="input-group">
+                <span class="input-group-text bg-transparent border-0">
+                    <i class="fa-solid fa-search text-white-50"></i>
+                </span>
+                <input type="text" class="form-control border-0 text-white" placeholder="Search...">
+            </div>
+        </div>
+        
+        <div class="header-icons d-flex align-items-center">
+            <button class="btn bg-transparent border-0 me-2">
+                <i class="fa-solid fa-gear text-white-50"></i>
+            </button>
+            <button class="btn bg-transparent border-0 me-2">
+                <i class="fa-solid fa-bell text-white-50"></i>
+            </button>
+            <div class="user-profile d-flex align-items-center">
+                <i class="fa-solid fa-user text-white-50 p-2 rounded-circle" style="width: 35px; height: 35px; background-color: #1A1F37;"></i>
+            </div>
         </div>
     </div>
-</nav>
-
+</div>

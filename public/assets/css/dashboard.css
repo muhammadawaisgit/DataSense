@@ -1,0 +1,124 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css");
+
+* {
+    font-family: "Plus Jakarta Display", "Raleway", sans-serif;
+}
+
+.dashboard-body {
+    background: url('../images/bg/dashboard-bg.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* ---------------------- Header CSS ---------------------- */
+
+.dashboard-header {
+    background: rgb(6,11,38);
+    background: linear-gradient(96deg, rgba(6,11,38,0.8) 0%, rgba(7,12,39,0.8) 50%, rgba(26,31,55,0.8) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-container .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-container .form-control:focus {
+    box-shadow: none;
+}
+
+.header-icons .btn:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px;
+}
+
+/* ---------------------- Sidebar CSS ---------------------- */
+
+.sidebar-main {
+    width: 264px;
+    height: 100vh;
+    padding: 10px;
+}
+
+.sidebar-container {
+    background: rgb(6,11,38);
+    background: -moz-linear-gradient(96deg, rgba(6,11,38,1) 0%, rgba(7,12,39,1) 50%, rgba(26,31,55,0) 100%);
+    background: -webkit-linear-gradient(96deg, rgba(6,11,38,1) 0%, rgba(7,12,39,1) 50%, rgba(26,31,55,0) 100%);
+    background: linear-gradient(96deg, rgba(6,11,38,1) 0%, rgba(7,12,39,1) 50%, rgba(26,31,55,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#060b26",endColorstr="#1a1f37",GradientType=1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 0px 22px;
+    position: relative;
+}
+
+.sidebar-header {
+    min-height: 80px;
+}
+
+.sidebar-line {
+    width: 100%;
+    height: 1px;
+    background: rgb(224,225,226);
+    background: linear-gradient(90deg, rgba(224,225,226,0) 0%, rgba(224,225,226,1) 50%, rgba(224,225,226,0.3029586834733894) 100%);
+}
+
+.sidebar-menu {
+    height: calc(100vh - 140px);
+}
+
+.sidebar-menu-icon {
+    color: #fff;
+    font-size: 14px;
+}
+
+.sidebar-menu-icon-container {
+    border-radius: 12px;
+    background-color: #1A1F37;
+    min-width: 30px;
+    min-height: 30px;
+    margin-right: 10px;
+}
+
+.sidebar-menu-item {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none !important;
+    display: block;
+    border-radius: 15px;
+}
+
+.sidebar-menu-item:hover {
+    background-color: #1A1F37;
+}
+
+.sidebar-menu-item:hover .sidebar-menu-icon-container {
+    background-color: #0075FF;
+}
+
+.sidebar-need-help-img {
+    position: absolute;
+    bottom: 22px;
+    width: 200px;
+    cursor: pointer;
+}
+
+/* ---------------------- Bootstrap Overrides ---------------------- */
+
+.form-control {
+    background-color: #0F1535;
+    border: 1px solid rgba(160, 174, 192, 0.5) !important;
+    color: #A0AEC0 !important;
+    border-radius: 12px !important;
+}
+
+.form-control:focus {
+    background-color: #0F1535;
+    border: none;
+    color: #A0AEC0 !important;
+    box-shadow: none;
+}

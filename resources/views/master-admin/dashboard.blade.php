@@ -1,170 +1,103 @@
 @extends('layouts.dashboard')
-
 @section('title', 'Dashboard')
-
 @section('content')
-<div class="container-fluid">
-    <div class="row mt-4">
-        <!-- Statistics Cards -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Users</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">1,234</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                        </div>
+<div class="container-fluid px-3">
+    <div class="row g-3">
+        <div class="col-12 px-0">
+            <div class="card border-0 rounded-4" style="background: rgba(6,11,38,0.8); backdrop-filter: blur(10px);">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="text-white mb-0">Authors Table</h5>
+                        <button class="btn btn-primary rounded-3 px-4" style="background-color: #0075FF; border: none;">
+                            <i class="fa-solid fa-plus me-2"></i>Add New
+                        </button>
                     </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Revenue</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">75%</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Charts Row -->
-    <div class="row">
-        <div class="col-xl-8 col-lg-7">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-pie">
-                        <canvas id="myPieChart"></canvas>
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th class="text-white-50" style="font-weight: 400;">AUTHOR</th>
+                                    <th class="text-white-50" style="font-weight: 400;">FUNCTION</th>
+                                    <th class="text-white-50" style="font-weight: 400;">STATUS</th>
+                                    <th class="text-white-50" style="font-weight: 400;">EMPLOYED</th>
+                                    <th class="text-white-50" style="font-weight: 400;">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="align-middle">
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded-circle me-3" style="width: 40px; height: 40px; background-color: #1A1F37;">
+                                                <i class="fa-solid fa-user text-white-50 p-2 d-flex justify-content-center align-items-center h-100"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="text-white mb-0">John Michael</h6>
+                                                <small class="text-white-50">john@creative-tim.com</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <h6 class="text-white mb-0">Manager</h6>
+                                            <small class="text-white-50">Organization</small>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="badge rounded-pill px-3 py-2" style="background-color: rgba(0,201,167,0.1); color: #00C9A7;">Online</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-white-50">23/04/18</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-link text-decoration-none p-0 me-3">
+                                            <i class="fa-solid fa-pen text-white-50"></i>
+                                        </button>
+                                        <button class="btn btn-link text-decoration-none p-0">
+                                            <i class="fa-solid fa-trash text-white-50"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="align-middle">
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded-circle me-3" style="width: 40px; height: 40px; background-color: #1A1F37;">
+                                                <i class="fa-solid fa-user text-white-50 p-2 d-flex justify-content-center align-items-center h-100"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="text-white mb-0">Alexa Liras</h6>
+                                                <small class="text-white-50">alexa@creative-tim.com</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <h6 class="text-white mb-0">Programator</h6>
+                                            <small class="text-white-50">Developer</small>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="badge rounded-pill px-3 py-2" style="background-color: rgba(130,134,139,0.1); color: #82868B;">Offline</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-white-50">11/01/19</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-link text-decoration-none p-0 me-3">
+                                            <i class="fa-solid fa-pen text-white-50"></i>
+                                        </button>
+                                        <button class="btn btn-link text-decoration-none p-0">
+                                            <i class="fa-solid fa-trash text-white-50"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-.border-left-primary {
-    border-left: 4px solid #4e73df;
-}
-.border-left-success {
-    border-left: 4px solid #1cc88a;
-}
-.border-left-info {
-    border-left: 4px solid #36b9cc;
-}
-.border-left-warning {
-    border-left: 4px solid #f6c23e;
-}
-.chart-area {
-    height: 320px;
-    position: relative;
-}
-.chart-pie {
-    height: 320px;
-    position: relative;
-}
-</style>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-// Area Chart
-const areaCtx = document.getElementById('myAreaChart');
-new Chart(areaCtx, {
-    type: 'line',
-    data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        datasets: [{
-            label: 'Earnings',
-            data: [0, 10000, 5000, 15000, 10000, 20000, 15000],
-            fill: true,
-            borderColor: '#4e73df',
-            backgroundColor: 'rgba(78, 115, 223, 0.05)',
-            tension: 0.3
-        }]
-    },
-    options: {
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    }
-});
-
-// Pie Chart
-const pieCtx = document.getElementById('myPieChart');
-new Chart(pieCtx, {
-    type: 'doughnut',
-    data: {
-        labels: ['Direct', 'Referral', 'Social'],
-        datasets: [{
-            data: [55, 30, 15],
-            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-        }]
-    },
-    options: {
-        maintainAspectRatio: false,
-    }
-});
-</script>
 @endsection
+
