@@ -18,12 +18,22 @@
                         @csrf
                         <div class="mb-4">
                             <label class="form-label text-white">Email</label>
-                            <input type="email" name="email" class="form-control text-white login-input" placeholder="Your email address">
+                            <input type="email" name="email" class="form-control text-white login-input @error('email') is-invalid @enderror" placeholder="Your email address" value="{{ old('email') }}">
+                            @error('email')
+                                <div class="invalid-feedback text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         
                         <div class="mb-4">
                             <label class="form-label text-white">Password</label>
-                            <input type="password" name="password" class="form-control text-white login-input" placeholder="Your password">
+                            <input type="password" name="password" class="form-control text-white login-input @error('password') is-invalid @enderror" placeholder="Your password">
+                            @error('password')
+                                <div class="invalid-feedback text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="mb-4">

@@ -107,18 +107,25 @@
     cursor: pointer;
 }
 
-/* ---------------------- Bootstrap Overrides ---------------------- */
-
-.form-control {
-    background-color: #0F1535;
-    border: 1px solid rgba(160, 174, 192, 0.5) !important;
-    color: #A0AEC0 !important;
-    border-radius: 12px !important;
+.invalid-feedback {
+    display: block;
+    color: #dc3545;
+    margin-top: 0.25rem;
 }
 
-.form-control:focus {
-    background-color: #0F1535;
-    border: none;
-    color: #A0AEC0 !important;
-    box-shadow: none;
+.is-invalid {
+    border-color: #dc3545;
 }
+
+.edit-icon, .delete-icon {
+    transition: color 0.1s ease;
+}
+
+.edit-icon:hover {
+    color: #4318FF !important;
+}
+
+.delete-icon:hover {
+    color: #dc3545 !important;
+}
+

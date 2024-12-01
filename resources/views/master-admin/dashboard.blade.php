@@ -50,12 +50,12 @@
                                         <span class="text-white-50">23/04/18</span>
                                     </td>
                                     <td>
-                                        <button class="btn btn-link text-decoration-none p-0 me-3">
-                                            <i class="fa-solid fa-pen text-white-50"></i>
-                                        </button>
-                                        <button class="btn btn-link text-decoration-none p-0">
-                                            <i class="fa-solid fa-trash text-white-50"></i>
-                                        </button>
+                                        <a class="btn btn-link text-decoration-none p-0 me-3">
+                                            <i class="edit-icon fa-solid fa-pen text-white-50"></i>
+                                        </a>
+                                        <a class="btn btn-link text-decoration-none p-0">
+                                            <i class="delete-icon fa-solid fa-trash text-white-50"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr class="align-middle">
@@ -83,12 +83,12 @@
                                         <span class="text-white-50">11/01/19</span>
                                     </td>
                                     <td>
-                                        <button class="btn btn-link text-decoration-none p-0 me-3">
-                                            <i class="fa-solid fa-pen text-white-50"></i>
-                                        </button>
-                                        <button class="btn btn-link text-decoration-none p-0">
-                                            <i class="fa-solid fa-trash text-white-50"></i>
-                                        </button>
+                                        <a class="btn btn-link text-decoration-none p-0 me-3">
+                                            <i class="edit-icon fa-solid fa-pen text-white-50"></i>
+                                        </a>
+                                        <a class="btn btn-link text-decoration-none p-0">
+                                            <i class="delete-icon fa-solid fa-trash text-white-50"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             </tbody>

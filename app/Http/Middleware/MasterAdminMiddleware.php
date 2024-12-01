@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+
 class MasterAdminMiddleware
 {
     /**
@@ -18,6 +19,6 @@ class MasterAdminMiddleware
         if (Auth::guard('master-admin')->check()) {
             return $next($request);
         }
-        return redirect()->route('master-admin.dashboard');
+        return redirect()->route('master-admin.login');
     }
 }

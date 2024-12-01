@@ -19,10 +19,20 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+
         if (Auth::guard('master-admin')->attempt($credentials, $request->remember)) {
             return redirect()->route('master-admin.dashboard');
         }
-        return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
+
+        $user = MasterAdmin::where('email', $request->email)->first();
+        if (!$user) {
+            return redirect()->back()->withErrors([
+                'email' => 'Wrong email',
+            ]);
+        }
+        return redirect()->back()->withErrors([
+            'password' => 'Wrong password',
+        ]);
     }
 
     public function showSignupForm()
@@ -43,5 +53,11 @@ class AuthController extends Controller
             return redirect()->route('master-admin.login')->with('success', 'Account created successfully');
         }
         return redirect()->back()->withErrors(['message' => 'Failed to create account']);
+    }
+
+    public function logout()
+    {
+        Auth::guard('master-admin')->logout();
+        return redirect()->route('master-admin.login');
     }
 }

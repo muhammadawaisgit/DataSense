@@ -20,7 +20,7 @@
                 <span class="sidebar-menu-text text-white">Profile</span>
             </a>
 
-            <a href="#" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
+            <a href="{{ route('master-admin.logout') }}" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
                 <div class="sidebar-menu-icon-container">
                     <i class="sidebar-menu-icon fa-solid fa-sign-out p-2"></i>
                 </div>

@@ -1,0 +1,19 @@
+/* ---------------------- Bootstrap Overrides ---------------------- */
+
+.form-control {
+    background-color: #0F1535;
+    border: 1px solid rgba(160, 174, 192, 0.5) !important;
+    color: #A0AEC0 !important;
+    border-radius: 12px !important;
+}
+
+.form-control:focus {
+    background-color: #0F1535;
+    border: none;
+    color: #A0AEC0 !important;
+    box-shadow: none;
+}
+
+input:-internal-autofill-selected {
+    background-color: #0F1535 !important;
+}
