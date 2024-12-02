@@ -17,6 +17,8 @@ Route::prefix('master-admin')->group(function () {
 
     Route::middleware(['auth:master-admin'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('master-admin.dashboard');
+        Route::get('/add-user', [DashboardController::class, 'addUser'])->name('master-admin.add-user');
+        Route::post('/add-user', [DashboardController::class, 'insertUserAdmin'])->name('master-admin.insert-add-user');
     });
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('master-admin.logout');

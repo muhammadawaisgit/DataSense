@@ -6,7 +6,7 @@
                 <li class="breadcrumb-item active text-white" aria-current="page">Dashboard</li>
             </ol>
         </nav>
-        <h4 class="mb-0 text-white">Dashboard</h4>
+        <h4 class="mb-0 text-white">@yield('title')</h4>
     </div>
     
     <div class="dashboard-header-right d-flex align-items-center">

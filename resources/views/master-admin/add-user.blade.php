@@ -10,29 +10,42 @@
                         <h5 class="text-white mb-0">Add New User</h5>
                     </div>
 
-                    <form>
+                    <!-- alert -->
+                    @if($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    <form action="{{ route('master-admin.insert-add-user') }}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-white-50">Full Name</label>
-                                <input type="text" class="form-control bg-transparent text-white border-0" style="background-color: #1A1F37 !important;">
+                                <input type="text" name="name" class="form-control bg-transparent text-white border-0" style="background-color: #1A1F37 !important;">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-white-50">Email</label>
-                                <input type="email" class="form-control bg-transparent text-white border-0" style="background-color: #1A1F37 !important;">
+                                <input type="email" name="email" class="form-control bg-transparent text-white border-0" style="background-color: #1A1F37 !important;">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-white-50">Password</label>
-                                <input type="password" class="form-control bg-transparent text-white border-0" style="background-color: #1A1F37 !important;">
+                                <input type="password" name="password" class="form-control bg-transparent text-white border-0" style="background-color: #1A1F37 !important;">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-white-50">Role</label>
-                                <select class="form-select bg-transparent text-white border-0" style="background-color: #1A1F37 !important;">
+                                <select name="role" class="form-select bg-transparent text-white border-0" style="background-color: #1A1F37 !important;">
                                     <option value="user-admin">User Admin</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-white-50">Status</label>
-                                <select class="form-select bg-transparent text-white border-0" style="background-color: #1A1F37 !important;">
+                                <select name="status" class="form-select bg-transparent text-white border-0" style="background-color: #1A1F37 !important;">
                                     <option value="active">Active</option>
                                     <option value="inactive">Inactive</option>
                                 </select>

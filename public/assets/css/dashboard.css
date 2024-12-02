@@ -129,3 +129,30 @@
     color: #dc3545 !important;
 }
 
+.edit-icon, .delete-icon {
+    transition: color 0.1s ease;
+}
+
+.edit-icon:hover {
+    color: #4318FF !important;
+}
+
+.delete-icon:hover {
+    color: #dc3545 !important;
+}
+
+/* Add these styles for the alert */
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.2);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    color: #fff;
+}
+
+.alert-danger ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}

@@ -6,7 +6,7 @@
         </div>
         <div class="sidebar-line mx-auto mb-3"></div>
         <div class="sidebar-menu">
-            <a href="#" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
+            <a href="{{ route('master-admin.dashboard') }}" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
                 <div class="sidebar-menu-icon-container">
                     <i class="sidebar-menu-icon fa-solid fa-house p-2"></i>
                 </div>

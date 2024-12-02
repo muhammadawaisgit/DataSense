@@ -7,20 +7,20 @@
             <div class="card border-0 rounded-4" style="background: rgba(6,11,38,0.8); backdrop-filter: blur(10px);">
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="text-white mb-0">Authors Table</h5>
-                        <button class="btn btn-primary rounded-3 px-4" style="background-color: #0075FF; border: none;">
+                        <h5 class="text-white mb-0">User Admins Table</h5>
+                        <a href="{{ route('master-admin.add-user') }}" class="btn btn-primary rounded-3 px-4" style="background-color: #0075FF; border: none;">
                             <i class="fa-solid fa-plus me-2"></i>Add New
-                        </button>
+                        </a>
                     </div>
 
                     <div class="table-responsive">
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th class="text-white-50" style="font-weight: 400;">AUTHOR</th>
-                                    <th class="text-white-50" style="font-weight: 400;">FUNCTION</th>
+                                    <th class="text-white-50" style="font-weight: 400;">NAME</th>
+                                    <th class="text-white-50" style="font-weight: 400;">EMAIL</th>
+                                    <th class="text-white-50" style="font-weight: 400;">ROLE</th>
                                     <th class="text-white-50" style="font-weight: 400;">STATUS</th>
-                                    <th class="text-white-50" style="font-weight: 400;">EMPLOYED</th>
                                     <th class="text-white-50" style="font-weight: 400;">ACTION</th>
                                 </tr>
                             </thead>
