@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('role');
             $table->string('status');
+            $table->string('last_login')->nullable();
             $table->timestamps();
         });
     }
