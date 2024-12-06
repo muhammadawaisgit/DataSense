@@ -35,4 +35,10 @@ class AuthController extends Controller
             'password' => 'Wrong password',
         ]);
     }
+
+    public function logout()
+    {
+        Auth::guard('user-admin')->logout();
+        return redirect()->route('admin.login');
+    }
 }

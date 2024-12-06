@@ -1,0 +1,10 @@
+root {
+    --primary-color: #0075FF;
+
+    /* Sidebar */
+    --sidebar-bg: #1A1F37;
+    --sidebar-item-text-color: #8391AF;
+    --sidebar-item-icon-bg: #252A41;
+    --sidebar-item-icon-hover-bg: #0075FF;
+    --sidebar-item-hover-bg: #0075FF;
+}

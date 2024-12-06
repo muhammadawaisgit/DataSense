@@ -6,26 +6,55 @@
         </div>
         <div class="sidebar-line mx-auto mb-3"></div>
         <div class="sidebar-menu">
-            <a href="{{ route('master-admin.dashboard') }}" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
-                <div class="sidebar-menu-icon-container">
-                    <i class="sidebar-menu-icon fa-solid fa-house p-2"></i>
-                </div>
-                <span class="sidebar-menu-text text-white">Dashboard</span>
-            </a>
+            @if (Auth::guard('master-admin')->check())
+                <a href="{{ route('master-admin.dashboard') }}" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
+                    <div class="sidebar-menu-icon-container">
+                        <i class="sidebar-menu-icon fa-solid fa-house p-2"></i>
+                    </div>
+                    <span class="sidebar-menu-text text-white">Dashboard</span>
+                </a>
+            @elseif (Auth::guard('user-admin')->check())
+                <a href="{{ route('admin.dashboard') }}" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
+                    <div class="sidebar-menu-icon-container">
+                        <i class="sidebar-menu-icon fa-solid fa-house p-2"></i>
+                    </div>
+                    <span class="sidebar-menu-text text-white">Dashboard</span>
+                </a>
+            @endif
 
-            <a href="#" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
-                <div class="sidebar-menu-icon-container">
-                    <i class="sidebar-menu-icon fa-solid fa-user p-2"></i>
-                </div>
-                <span class="sidebar-menu-text text-white">Profile</span>
-            </a>
+            @if (Auth::guard('user-admin')->check())
+                <a href="{{ route('admin.appearance-settings') }}" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
+                    <div class="sidebar-menu-icon-container">
+                        <i class="sidebar-menu-icon fa-solid fa-gear p-2"></i>
+                    </div>
+                    <span class="sidebar-menu-text text-white">Appearance Settings</span>
+                </a>
+            @endif
 
-            <a href="{{ route('master-admin.logout') }}" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
-                <div class="sidebar-menu-icon-container">
-                    <i class="sidebar-menu-icon fa-solid fa-sign-out p-2"></i>
-                </div>
-                <span class="sidebar-menu-text text-white">Logout</span>
-            </a>
+            @if (Auth::guard('user-admin')->check())
+                <a href="#" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
+                    <div class="sidebar-menu-icon-container">
+                        <i class="sidebar-menu-icon fa-solid fa-user p-2"></i>
+                    </div>
+                    <span class="sidebar-menu-text text-white">Profile</span>
+                </a>
+            @endif
+            
+            @if (Auth::guard('master-admin')->check())
+                <a href="{{ route('master-admin.logout') }}" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
+                    <div class="sidebar-menu-icon-container">
+                        <i class="sidebar-menu-icon fa-solid fa-sign-out p-2"></i>
+                    </div>
+                    <span class="sidebar-menu-text text-white">Logout</span>
+                </a>
+            @elseif (Auth::guard('user-admin')->check())
+                <a href="{{ route('admin.logout') }}" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
+                    <div class="sidebar-menu-icon-container">
+                        <i class="sidebar-menu-icon fa-solid fa-sign-out p-2"></i>
+                    </div>
+                    <span class="sidebar-menu-text text-white">Logout</span>
+                </a>
+            @endif
 
             <img class="sidebar-need-help-img" src="{{ asset('assets/images/elements/need-help.png') }}" alt="Need Help" class="img-fluid">
 

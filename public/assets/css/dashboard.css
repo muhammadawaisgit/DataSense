@@ -92,6 +92,14 @@
     border-radius: 15px;
 }
 
+.sidebar-menu-item.active {
+    background-color: #1A1F37;
+}
+
+.sidebar-menu-item.active .sidebar-menu-icon-container {
+    background-color: #0075FF;
+}
+
 .sidebar-menu-item:hover {
     background-color: #1A1F37;
 }
@@ -131,10 +139,6 @@
 
 .edit-icon, .delete-icon {
     transition: color 0.1s ease;
-}
-
-.edit-icon:hover {
-    color: #4318FF !important;
 }
 
 .delete-icon:hover {

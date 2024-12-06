@@ -19,6 +19,6 @@ class MasterAdminMiddleware
         if (Auth::guard('master-admin')->check()) {
             return $next($request);
         }
-        return redirect()->route('master-admin.login');
+        return redirect()->route('master-admin.login')->withErrors(['error' => 'You are not authorized to access this page']);
     }
 }

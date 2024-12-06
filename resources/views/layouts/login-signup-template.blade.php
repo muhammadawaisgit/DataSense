@@ -6,6 +6,14 @@
         <div class="row h-100 align-items-center justify-content-center">
             <div class="col-11 col-md-8 col-lg-6 col-xl-5">
                 <div class="card login-card">
+                    @error('error')
+                        <div class="alert alert-dark alert-dismissible fade show m-4 mb-0" role="alert">
+                            @foreach ($errors->all() as $error)
+                                {{ $error }}
+                            @endforeach
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @enderror
                     <div class="card-body p-5">
                         <div class="text-center mb-4">
                             <h4 class="text-white mb-3">@yield('title')</h4>
@@ -56,4 +64,5 @@
         </div>
     </main>
 </body>
+@include('components.scripts')
 </html>

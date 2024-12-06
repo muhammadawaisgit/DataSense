@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+
 class UserAdminMiddleware
 {
     /**
@@ -19,6 +20,6 @@ class UserAdminMiddleware
             return $next($request);
         }
 
-        return redirect()->route('admin.login');
+        return redirect()->route('admin.login')->withErrors(['error' => 'You are not authorized to access this page']);
     }
 }
