@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-overrides.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/color-scheme.css') }}">
 </head>
+
+@include('components.dashboard-theme')
 <body class="dashboard-body">
 
     <section class="d-flex">

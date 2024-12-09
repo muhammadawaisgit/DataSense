@@ -12,19 +12,19 @@
 /* ---------------------- Header CSS ---------------------- */
 
 .dashboard-header {
-    background: rgb(6,11,38);
-    background: linear-gradient(96deg, rgba(6,11,38,0.8) 0%, rgba(7,12,39,0.8) 50%, rgba(26,31,55,0.8) 100%);
-    backdrop-filter: blur(10px);
+    background: var(--header-bg-start);
+    background: linear-gradient(96deg, var(--header-bg-start) 0%, var(--header-bg-mid) 50%, var(--header-bg-end) 100%);
+    backdrop-filter: blur(var(--content-blur));
     border-radius: 20px;
     margin: 10px;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--header-text-muted);
 }
 
 .search-container .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--input-placeholder);
 }
 
 .search-container .form-control:focus {
@@ -32,7 +32,7 @@
 }
 
 .header-icons .btn:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important;
+    background-color: var(--header-icon-hover) !important;
     border-radius: 12px;
 }
 
@@ -45,12 +45,12 @@
 }
 
 .sidebar-container {
-    background: rgb(6,11,38);
-    background: -moz-linear-gradient(96deg, rgba(6,11,38,1) 0%, rgba(7,12,39,1) 50%, rgba(26,31,55,0) 100%);
-    background: -webkit-linear-gradient(96deg, rgba(6,11,38,1) 0%, rgba(7,12,39,1) 50%, rgba(26,31,55,0) 100%);
-    background: linear-gradient(96deg, rgba(6,11,38,1) 0%, rgba(7,12,39,1) 50%, rgba(26,31,55,0) 100%);
+    background: var(--sidebar-bg-start);
+    background: -moz-linear-gradient(96deg, var(--sidebar-bg-start) 0%, var(--sidebar-bg-mid) 50%, var(--sidebar-bg-end) 100%);
+    background: -webkit-linear-gradient(96deg, var(--sidebar-bg-start) 0%, var(--sidebar-bg-mid) 50%, var(--sidebar-bg-end) 100%);
+    background: linear-gradient(96deg, var(--sidebar-bg-start) 0%, var(--sidebar-bg-mid) 50%, var(--sidebar-bg-end) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#060b26",endColorstr="#1a1f37",GradientType=1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(var(--content-blur));
     border-radius: 20px;
     padding: 0px 22px;
     position: relative;
@@ -63,8 +63,8 @@
 .sidebar-line {
     width: 100%;
     height: 1px;
-    background: rgb(224,225,226);
-    background: linear-gradient(90deg, rgba(224,225,226,0) 0%, rgba(224,225,226,1) 50%, rgba(224,225,226,0.3029586834733894) 100%);
+    background: var(--sidebar-line-color);
+    background: linear-gradient(90deg, rgba(224,225,226,0) 0%, var(--sidebar-line-color) 50%, rgba(224,225,226,0.3029586834733894) 100%);
 }
 
 .sidebar-menu {
@@ -72,13 +72,13 @@
 }
 
 .sidebar-menu-icon {
-    color: #fff;
+    color: var(--sidebar-text-color);
     font-size: 14px;
 }
 
 .sidebar-menu-icon-container {
     border-radius: 12px;
-    background-color: #1A1F37;
+    background-color: var(--sidebar-menu-icon-bg);
     min-width: 30px;
     min-height: 30px;
     margin-right: 10px;
@@ -93,19 +93,19 @@
 }
 
 .sidebar-menu-item.active {
-    background-color: #1A1F37;
+    background-color: var(--sidebar-menu-hover-bg);
 }
 
 .sidebar-menu-item.active .sidebar-menu-icon-container {
-    background-color: #0075FF;
+    background-color: var(--sidebar-menu-icon-hover);
 }
 
 .sidebar-menu-item:hover {
-    background-color: #1A1F37;
+    background-color: var(--sidebar-menu-hover-bg);
 }
 
 .sidebar-menu-item:hover .sidebar-menu-icon-container {
-    background-color: #0075FF;
+    background-color: var(--sidebar-menu-icon-hover);
 }
 
 .sidebar-need-help-img {
@@ -117,12 +117,12 @@
 
 .invalid-feedback {
     display: block;
-    color: #dc3545;
+    color: var(--danger-text);
     margin-top: 0.25rem;
 }
 
 .is-invalid {
-    border-color: #dc3545;
+    border-color: var(--danger-text);
 }
 
 .edit-icon, .delete-icon {
@@ -130,11 +130,11 @@
 }
 
 .edit-icon:hover {
-    color: #4318FF !important;
+    color: var(--primary-gradient-start) !important;
 }
 
 .delete-icon:hover {
-    color: #dc3545 !important;
+    color: var(--danger-text) !important;
 }
 
 .edit-icon, .delete-icon {
@@ -142,14 +142,14 @@
 }
 
 .delete-icon:hover {
-    color: #dc3545 !important;
+    color: var(--danger-text) !important;
 }
 
 /* Add these styles for the alert */
 .alert-danger {
-    background-color: rgba(220, 53, 69, 0.2);
-    border: 1px solid rgba(220, 53, 69, 0.3);
-    color: #fff;
+    background-color: var(--danger-bg);
+    border: 1px solid var(--danger-border);
+    color: var(--card-text);
 }
 
 .alert-danger ul {
