@@ -42,8 +42,12 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware(['user-admin'])->group(function () {
         Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('admin.dashboard');
+        
         Route::get('/appearance-settings', [UserDashboardController::class, 'appearanceSettings'])->name('admin.appearance-settings');
         Route::post('/appearance-settings', [UserDashboardController::class, 'updateAppearanceSettings'])->name('admin.appearance.settings.update');
+
+        Route::get('/fields-settings', [UserDashboardController::class, 'fieldsSettings'])->name('admin.fields-settings');
+        Route::post('/fields-settings', [UserDashboardController::class, 'updateFieldsSettings'])->name('admin.fields-settings.update');
     });
 
     Route::get('/logout', [UserAuthController::class, 'logout'])->name('admin.logout');

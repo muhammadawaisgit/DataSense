@@ -29,6 +29,13 @@
                     </div>
                     <span class="sidebar-menu-text text-white">Appearance Settings</span>
                 </a>
+
+                <a href="{{ route('admin.fields-settings') }}" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
+                    <div class="sidebar-menu-icon-container">
+                        <i class="sidebar-menu-icon fa-solid fa-gear p-2"></i>
+                    </div>
+                    <span class="sidebar-menu-text text-white">Fields Settings</span>
+                </a>
             @endif
 
             @if (Auth::guard('user-admin')->check())

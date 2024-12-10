@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\UserAdmin;
 use App\Models\AppearanceSetting;
+use App\Models\FieldSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -79,5 +80,40 @@ class UserDashboardController extends Controller
             return redirect()->back()->with('success', 'Appearance settings updated successfully');
         }
         return redirect()->back()->with('error', 'Failed to update appearance settings');
+    }
+
+    public function fieldsSettings()
+    {
+        return view('admin.fields-settings');
+    }
+
+    public function updateFieldsSettings(Request $request)
+    {
+        $fields = [
+            'firstName', 'lastName', 'email', 'company', 'phone', 'mobile',
+            'address', 'city', 'state', 'zipcode', 'birthMonth', 'birthDay',
+            'physicalMailing', 'digitalMailing', 'loyaltyEnrollment'
+        ];
+
+        $settings = [];
+        foreach ($fields as $field) {
+            $settings[$field] = [
+                'label' => $request->input('label_' . $field),
+                'value' => $request->input($field . '_value'),
+                'display' => $request->has($field . '_display'),
+                'required' => $request->has($field . '_required')
+            ];
+        }
+
+
+        $update = FieldSettings::updateOrCreate(
+            ['user_admin_id' => Auth::guard('user-admin')->user()->id],
+            ['fields_settings' => json_encode($settings)]
+        );
+
+        if($update) {
+            return redirect()->back()->with('success', 'Field settings updated successfully');
+        }
+        return redirect()->back()->withErrors(['error' => 'Failed to update field settings']);
     }
 }

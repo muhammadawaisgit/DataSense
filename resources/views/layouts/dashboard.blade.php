@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/color-scheme.css') }}">
 </head>
 
-@include('components.dashboard-theme')
+@include('components.dashboard-theme-script')
 <body class="dashboard-body">
 
     <section class="d-flex">

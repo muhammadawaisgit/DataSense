@@ -4,6 +4,10 @@
     font-family: "Plus Jakarta Display", "Raleway", sans-serif;
 }
 
+.form-control::placeholder, select, .form-select option {
+    color: var(--input-placeholder);
+}
+
 .dashboard-body {
     background: url('../images/bg/dashboard-bg.png') no-repeat center center fixed;
     background-size: cover;
@@ -143,6 +147,11 @@
 
 .delete-icon:hover {
     color: var(--danger-text) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
 
 /* Add these styles for the alert */
