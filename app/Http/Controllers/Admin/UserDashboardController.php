@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\UserAdmin;
 use App\Models\AppearanceSetting;
 use App\Models\FieldSettings;
+use App\Models\CustomAdsSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -115,5 +116,60 @@ class UserDashboardController extends Controller
             return redirect()->back()->with('success', 'Field settings updated successfully');
         }
         return redirect()->back()->withErrors(['error' => 'Failed to update field settings']);
+    }
+
+    public function customAdsSettings()
+    {
+        return view('admin.custom-ads-settings');
+    }
+
+    public function updateCustomAdsSettings(Request $request)
+    {
+        $settings = [];
+
+        // Handle up to 3 ads
+        for ($i = 1; $i <= 3; $i++) {
+            $settings["ad{$i}"] = [
+                'link' => $request->input("ad{$i}_link"), 
+                'display' => $request->has("ad{$i}_display")
+            ];
+
+            // Handle image upload if provided
+            if ($request->hasFile("ad{$i}_image")) {
+                $image = $request->file("ad{$i}_image");
+                $extension = $image->getClientOriginalExtension();
+                $baseImageName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $imageName = $baseImageName . '.' . $extension;
+                
+                // Check if file exists and add increment number
+                $counter = 1;
+                while (file_exists(public_path('uploads/ads/' . $imageName))) {
+                    $imageName = $baseImageName . '-' . $counter . '.' . $extension;
+                    $counter++;
+                }
+
+                $image->move(public_path('uploads/ads'), $imageName);
+                $settings["ad{$i}"]['image'] = 'uploads/ads/' . $imageName;
+            } else {
+                // Keep existing image if no new one uploaded
+                $existingSettings = CustomAdsSettings::where('user_admin_id', Auth::guard('user-admin')->user()->id)->first();
+                if ($existingSettings) {
+                    $existingData = json_decode($existingSettings->ads_settings, true);
+                    if (isset($existingData["ad{$i}"]['image'])) {
+                        $settings["ad{$i}"]['image'] = $existingData["ad{$i}"]['image'];
+                    }
+                }
+            }
+        }
+
+        $update = CustomAdsSettings::updateOrCreate(
+            ['user_admin_id' => Auth::guard('user-admin')->user()->id],
+            ['ads_settings' => json_encode($settings)]
+        );
+
+        if ($update) {
+            return redirect()->back()->with('success', 'Custom ads settings updated successfully');
+        }
+        return redirect()->back()->withErrors(['error' => 'Failed to update custom ads settings']);
     }
 }

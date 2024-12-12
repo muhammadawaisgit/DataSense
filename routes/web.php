@@ -48,6 +48,9 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/fields-settings', [UserDashboardController::class, 'fieldsSettings'])->name('admin.fields-settings');
         Route::post('/fields-settings', [UserDashboardController::class, 'updateFieldsSettings'])->name('admin.fields-settings.update');
+
+        Route::get('/custom-ads-settings', [UserDashboardController::class, 'customAdsSettings'])->name('admin.custom-ads-settings');
+        Route::post('/custom-ads-settings', [UserDashboardController::class, 'updateCustomAdsSettings'])->name('admin.custom-ads-settings.update');
     });
 
     Route::get('/logout', [UserAuthController::class, 'logout'])->name('admin.logout');
