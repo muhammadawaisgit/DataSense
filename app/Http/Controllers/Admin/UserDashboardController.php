@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserAdmin;
+use App\Models\User;
 use App\Models\AppearanceSetting;
 use App\Models\FieldSettings;
 use App\Models\CustomAdsSettings;
@@ -14,8 +14,60 @@ class UserDashboardController extends Controller
 {
     public function dashboard()
     {
-        // $userAdmins = UserAdmin::all();  // Get all user admins
-        return view('admin.dashboard');
+        $users = User::all();  // Get all user admins
+        return view('admin.dashboard', compact('users'));
+    }
+
+    public function addUser()
+    {
+        return view('admin.add-user');
+    }
+
+    public function insertUser(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:user_admins,email',
+            'password' => 'required|min:6',
+            'role' => 'required|in:Admin,User',
+            'status' => 'required|in:active,inactive'
+        ]);
+
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']),
+            'role' => $validated['role'],
+            'status' => $validated['status']
+        ]);
+
+        if($user) {
+            return redirect()->route('admin.dashboard')->with('success', 'User added successfully');
+        }
+        return redirect()->back()->withErrors(['error' => 'Failed to add user']);
+    }
+
+    public function editUser($id)
+    {
+        $user = User::find($id);
+        return view('admin.edit-user', compact('user'));
+    }
+
+    public function updateUser(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->update($request->all());
+        if($user) {
+            return redirect()->route('admin.dashboard')->with('success', 'User updated successfully');
+        }
+        return redirect()->back()->withErrors(['error' => 'Failed to update user']);
+    }
+
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('admin.dashboard')->with('success', 'User deleted successfully');
     }
 
     public function appearanceSettings()

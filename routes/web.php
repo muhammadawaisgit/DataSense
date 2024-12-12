@@ -42,7 +42,13 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware(['user-admin'])->group(function () {
         Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('admin.dashboard');
-        
+
+        Route::get('/add-user', [UserDashboardController::class, 'addUser'])->name('admin.add-user');
+        Route::post('/add-user', [UserDashboardController::class, 'insertUser'])->name('admin.insert-add-user');
+        Route::get('/edit-user/{id}', [UserDashboardController::class, 'editUser'])->name('admin.edit-user');
+        Route::post('/edit-user/{id}', [UserDashboardController::class, 'updateUser'])->name('admin.edit-user');
+        Route::delete('/delete-user/{id}', [UserDashboardController::class, 'deleteUser'])->name('admin.delete-user');
+
         Route::get('/appearance-settings', [UserDashboardController::class, 'appearanceSettings'])->name('admin.appearance-settings');
         Route::post('/appearance-settings', [UserDashboardController::class, 'updateAppearanceSettings'])->name('admin.appearance.settings.update');
 
