@@ -23,8 +23,20 @@
     margin: 10px;
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
+.text-muted {
+    color: var(--header-text-muted) !important;
+}
+
+.breadcrumb-item, .breadcrumb-item a {
     color: var(--header-text-muted);
+}
+
+.breadcrumb-item.active, .breadcrumb-item.active::before {
+    color: var(--header-text-color);
+}
+
+.header-title {
+    color: var(--header-text-color);
 }
 
 .search-container .form-control::placeholder {
@@ -43,6 +55,7 @@
 /* ---------------------- Sidebar CSS ---------------------- */
 
 .sidebar-main {
+    position: relative;
     width: 264px;
     height: 100vh;
     padding: 10px;
@@ -58,6 +71,9 @@
     border-radius: 20px;
     padding: 0px 22px;
     position: relative;
+    width: 244px;
+    height: calc(100vh - 20px);
+    position: fixed;
 }
 
 .sidebar-header {
@@ -168,4 +184,9 @@
 
 .btn-close {
     filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.table-hover>tbody>tr:hover>* {
+    --bs-table-accent-bg: var(--bs-table-hover-bg);
+    color: var(--header-text-color);
 }

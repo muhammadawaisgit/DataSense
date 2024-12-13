@@ -10,7 +10,7 @@ use App\Models\CustomAdsSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserDashboardController extends Controller
+class AdminDashboardController extends Controller
 {
     public function dashboard()
     {
@@ -26,6 +26,7 @@ class UserDashboardController extends Controller
     public function insertUser(Request $request)
     {
         $validated = $request->validate([
+            'user_id' => 'required|exists:user_admins,id',
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:user_admins,email',
             'password' => 'required|min:6',
@@ -34,6 +35,7 @@ class UserDashboardController extends Controller
         ]);
 
         $user = User::create([
+            'user_admin_id' => $validated['user_id'],
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => bcrypt($validated['password']),
@@ -79,14 +81,16 @@ class UserDashboardController extends Controller
     {
         $colors = $request->all();
 
+        $user_admin_id = Auth::guard('user-admin')->check() ? Auth::guard('user-admin')->user()->id : session('user_admin_id');
+
         $update = AppearanceSetting::updateOrCreate(
-            ['user_admin_id' => Auth::guard('user-admin')->user()->id],
+            ['user_admin_id' => $user_admin_id],
             $colors
         );
 
         if($update) {
 
-        $settings = \App\Models\AppearanceSetting::where('user_admin_id', Auth::guard('user-admin')->user()->id)->first();
+            $settings = \App\Models\AppearanceSetting::where('user_admin_id', $user_admin_id)->first();
 
         // Store settings in session
         session([

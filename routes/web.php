@@ -3,9 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MasterAdmin\AuthController;
 use App\Http\Controllers\MasterAdmin\DashboardController;
-use App\Http\Controllers\Admin\UserDashboardController;
-use App\Http\Controllers\Admin\AuthController as UserAuthController;
-
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\User\UserAuthController;
+use App\Http\Controllers\User\UserDashboardController;
+Route::get('/', function () {
+    return redirect()->route('user.login');
+});
 
 // Master Admin Routes
 Route::prefix('master-admin')->group(function () {
@@ -37,29 +41,44 @@ Route::prefix('admin')->group(function () {
         return redirect()->route('admin.login');
     });
 
-    Route::get('/login', [UserAuthController::class, 'showLoginForm'])->name('admin.login');
-    Route::post('/login', [UserAuthController::class, 'login'])->name('admin.login');
+    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login');
 
     Route::middleware(['user-admin'])->group(function () {
-        Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
 
-        Route::get('/add-user', [UserDashboardController::class, 'addUser'])->name('admin.add-user');
-        Route::post('/add-user', [UserDashboardController::class, 'insertUser'])->name('admin.insert-add-user');
-        Route::get('/edit-user/{id}', [UserDashboardController::class, 'editUser'])->name('admin.edit-user');
-        Route::post('/edit-user/{id}', [UserDashboardController::class, 'updateUser'])->name('admin.edit-user');
-        Route::delete('/delete-user/{id}', [UserDashboardController::class, 'deleteUser'])->name('admin.delete-user');
+        Route::get('/add-user', [AdminDashboardController::class, 'addUser'])->name('admin.add-user');
+        Route::post('/add-user', [AdminDashboardController::class, 'insertUser'])->name('admin.insert-add-user');
+        Route::get('/edit-user/{id}', [AdminDashboardController::class, 'editUser'])->name('admin.edit-user');
+        Route::post('/edit-user/{id}', [AdminDashboardController::class, 'updateUser'])->name('admin.edit-user');
+        Route::delete('/delete-user/{id}', [AdminDashboardController::class, 'deleteUser'])->name('admin.delete-user');
 
-        Route::get('/appearance-settings', [UserDashboardController::class, 'appearanceSettings'])->name('admin.appearance-settings');
-        Route::post('/appearance-settings', [UserDashboardController::class, 'updateAppearanceSettings'])->name('admin.appearance.settings.update');
+        Route::get('/appearance-settings', [AdminDashboardController::class, 'appearanceSettings'])->name('admin.appearance-settings');
+        Route::post('/appearance-settings', [AdminDashboardController::class, 'updateAppearanceSettings'])->name('admin.appearance.settings.update');
 
-        Route::get('/fields-settings', [UserDashboardController::class, 'fieldsSettings'])->name('admin.fields-settings');
-        Route::post('/fields-settings', [UserDashboardController::class, 'updateFieldsSettings'])->name('admin.fields-settings.update');
+        Route::get('/fields-settings', [AdminDashboardController::class, 'fieldsSettings'])->name('admin.fields-settings');
+        Route::post('/fields-settings', [AdminDashboardController::class, 'updateFieldsSettings'])->name('admin.fields-settings.update');
 
-        Route::get('/custom-ads-settings', [UserDashboardController::class, 'customAdsSettings'])->name('admin.custom-ads-settings');
-        Route::post('/custom-ads-settings', [UserDashboardController::class, 'updateCustomAdsSettings'])->name('admin.custom-ads-settings.update');
+        Route::get('/custom-ads-settings', [AdminDashboardController::class, 'customAdsSettings'])->name('admin.custom-ads-settings');
+        Route::post('/custom-ads-settings', [AdminDashboardController::class, 'updateCustomAdsSettings'])->name('admin.custom-ads-settings.update');
     });
 
-    Route::get('/logout', [UserAuthController::class, 'logout'])->name('admin.logout');
+    Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+});
+
+Route::prefix('user')->group(function () {
+    Route::get('/login', [UserAuthController::class, 'showLoginForm'])->name('user.login');
+    Route::post('/login', [UserAuthController::class, 'login'])->name('user.login');
+
+    Route::middleware(['user-auth'])->group(function () {
+        Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('user.dashboard');
+        Route::post('/search-result', [UserDashboardController::class, 'searchResult'])->name('user.search-result');
+        Route::get('/customer-details/{id}', [UserDashboardController::class, 'customerDetails'])->name('user.customer-details');
+        Route::get('/edit-customer/{id}', [UserDashboardController::class, 'editCustomer'])->name('user.edit-customer');
+        Route::post('/update-customer/{id}', [UserDashboardController::class, 'updateCustomer'])->name('user.update-customer');
+    });
+
+    Route::get('/logout', [UserAuthController::class, 'logout'])->name('user.logout');
 });
 
 require __DIR__.'/auth.php';

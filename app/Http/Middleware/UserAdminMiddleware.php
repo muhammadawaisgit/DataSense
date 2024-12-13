@@ -16,7 +16,7 @@ class UserAdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard('user-admin')->check()) {
+        if (Auth::guard('user-admin')->check() || Auth::guard('user')->check()) {
             return $next($request);
         }
 

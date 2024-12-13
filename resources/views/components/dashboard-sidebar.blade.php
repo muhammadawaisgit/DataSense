@@ -1,5 +1,5 @@
 <div class="sidebar-main d-flex justify-content-center align-items-center">
-    <div class="sidebar-container w-100 h-100">
+    <div class="sidebar-container">
         <div class="sidebar-header d-flex justify-content-center align-items-center">
             {{-- <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="img-fluid"> --}}
             <h3 class="text-white text-uppercase mb-0" style="font-size: 14px;letter-spacing: 8px;">Vision</h3>
@@ -20,9 +20,16 @@
                     </div>
                     <span class="sidebar-menu-text text-white">Dashboard</span>
                 </a>
+            @elseif (Auth::guard('user')->check())
+                <a href="{{ route('user.dashboard') }}" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
+                    <div class="sidebar-menu-icon-container">
+                        <i class="sidebar-menu-icon fa-solid fa-store p-2"></i>
+                    </div>
+                    <span class="sidebar-menu-text text-white">Store</span>
+                </a>
             @endif
 
-            @if (Auth::guard('user-admin')->check())
+            @if (Auth::guard('user-admin')->check() || Auth::guard('user')->check())
                 <a href="{{ route('admin.appearance-settings') }}" class="sidebar-menu-item d-flex align-items-center p-2 w-100">
                     <div class="sidebar-menu-icon-container">
                         <i class="sidebar-menu-icon fa-solid fa-gear p-2"></i>

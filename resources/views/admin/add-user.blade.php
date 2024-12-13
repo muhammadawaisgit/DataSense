@@ -32,6 +32,7 @@
                     <form action="{{ route('admin.insert-add-user') }}" method="POST">
                         @csrf
                         <div class="row">
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-white-50">Full Name</label>
                                 <input type="text" name="name" class="form-control bg-transparent text-white border-0" style="background-color: #1A1F37 !important;">
