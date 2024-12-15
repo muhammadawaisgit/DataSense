@@ -14,6 +14,9 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_admin_id')
+                  ->constrained('user_admins')
+                  ->onDelete('cascade');
             $table->string('firstName');
             $table->string('lastName');
             $table->string('email');
