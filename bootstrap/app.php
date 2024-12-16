@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'user-auth' => \App\Http\Middleware\UserAuthMiddleware::class,
         ]);
     })
+    
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
