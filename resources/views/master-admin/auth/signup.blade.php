@@ -1,6 +1,6 @@
 @extends('layouts.master-admin')
 
-@section('title', 'Master Admin Login')
+@section('title', 'Master Admin Signup')
 
 @section('content')
 
