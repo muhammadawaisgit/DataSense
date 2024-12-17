@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->bigInteger('user_id');
-            $table->string('ip_address');
-            $table->text('user_agent');
-            $table->longText('payload');
-            $table->integer('last_activity');
+            $table->bigInteger('user_id')->nullable();
+            $table->string('ip_address')->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload')->nullable();
+            $table->integer('last_activity')->nullable();
         });
     }
 

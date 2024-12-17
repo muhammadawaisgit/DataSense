@@ -17,14 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'user-auth' => \App\Http\Middleware\UserAuthMiddleware::class,
         ]);
     })
-
-    ->withMiddleware(function (Middleware $middleware) {
-        $middleware->validateCsrfToken(
-            except: [
-                'stripe/*','login','register','forgot-password','reset-password','verify-email','email-verification-notification','logout'
-            ],
-        );
-    })
+    
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
