@@ -43,7 +43,7 @@
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-white-50">Role</label>
                                 <select name="role" class="form-select bg-transparent text-white border-0" style="background-color: #1A1F37 !important;">
-                                    <option value="user-admin" {{ $userAdmin->role == 'user-admin' ? 'selected' : '' }}>User Admin</option>
+                                    <option value="Admin" {{ $userAdmin->role == 'Admin' ? 'selected' : '' }}>Admin</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
