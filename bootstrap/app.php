@@ -19,7 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
     })
 
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->verifyCsrfToken(
+        $middleware->validateCsrfToken(
             except: [
                 'stripe/*','login','register','forgot-password','reset-password','verify-email','email-verification-notification','logout'
             ],
