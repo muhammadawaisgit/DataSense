@@ -60,9 +60,9 @@
                         </div>
 
                         <div class="d-flex justify-content-end mt-4">
-                            <button type="button" class="btn btn-secondary me-2 rounded-3 px-4" style="background-color: #1A1F37; border: none;">
+                            <a href="{{ route('master-admin.dashboard') }}" type="button" class="btn btn-secondary me-2 rounded-3 px-4" style="background-color: #1A1F37; border: none;">
                                 Cancel
-                            </button>
+                            </a>
                             <button type="submit" class="btn btn-primary rounded-3 px-4" style="background-color: #0075FF; border: none;">
                                 <i class="fa-solid fa-plus me-2"></i>Add User
                             </button>
