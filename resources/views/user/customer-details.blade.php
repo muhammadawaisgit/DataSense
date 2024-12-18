@@ -85,21 +85,40 @@
     </div>
 
     @if(isset($custom_ads))
-    @php
-        $custom_ads = json_decode($custom_ads->custom_ads, true);
-    @endphp
-        <div class="row justify-content-center mt-4">
+        @php
+            $user_admin_id = session('user_admin_id');
+            $adsSettings = \App\Models\CustomAdsSettings::where('user_admin_id', $user_admin_id)->first();
+            $settings = json_decode($adsSettings->ads_settings, true);
+        @endphp
+        <div class="row justify-content-center mt-5">
             <div class="col-11">
                 <div class="row g-4">
-                    @foreach(['ad1', 'ad2', 'ad3'] as $ad)
-                        @if(isset($custom_ads[$ad]['image']) && $custom_ads[$ad]['image'])
+                    @for($i = 1; $i <= 3; $i++)
+                        @if(isset($settings['ad'.$i]) && isset($settings['ad'.$i]['image']) && isset($settings['ad'.$i]['link']) && $settings['ad'.$i]['display'] == true)
                             <div class="col-md-4">
-                                <a href="{{ $custom_ads[$ad]['link'] }}" target="_blank">
-                                    <img src="{{ asset('storage/' . $custom_ads[$ad]['image']) }}" alt="Advertisement" class="img-fluid rounded-3">
-                                </a>
+                                <div class="ad-card position-relative overflow-hidden" style="border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                                    <a href="{{ $settings['ad'.$i]['link'] }}" target="_blank" class="text-decoration-none">
+                                        <div class="ad-image-wrapper" style="aspect-ratio: 16/9; overflow: hidden;">
+                                            <img src="{{ asset($settings['ad'.$i]['image']) }}" 
+                                                alt="Advertisement {{ $i }}" 
+                                                class="w-100 h-100 object-fit-cover"
+                                                style="transition: transform 0.3s ease;"
+                                                onmouseover="this.style.transform='scale(1.05)'"
+                                                onmouseout="this.style.transform='scale(1)'"
+                                                onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'text-center p-4 text-muted\'>Image not available</div>'">
+                                        </div>
+                                        <div class="ad-overlay position-absolute bottom-0 start-0 w-100 p-3" 
+                                             style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                                            <div class="d-flex align-items-center">
+                                                <span class="text-white small">Learn More</span>
+                                                <i class="fas fa-arrow-right text-white ms-2"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         @endif
-                    @endforeach
+                    @endfor
                 </div>
             </div>
         </div>

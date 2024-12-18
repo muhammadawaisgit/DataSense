@@ -14,7 +14,7 @@ class AdminDashboardController extends Controller
 {
     public function dashboard()
     {
-        $users = User::all();  // Get all user admins
+        $users = User::where('user_admin_id', Auth::guard('user-admin')->user()->id)->get();  // Get all user admins
         return view('admin.dashboard', compact('users'));
     }
 
@@ -182,6 +182,9 @@ class AdminDashboardController extends Controller
 
     public function updateCustomAdsSettings(Request $request)
     {
+
+        $user_admin_id = Auth::guard('user-admin')->check() ? Auth::guard('user-admin')->user()->id : session('user_admin_id');
+
         $settings = [];
 
         // Handle up to 3 ads
@@ -209,7 +212,7 @@ class AdminDashboardController extends Controller
                 $settings["ad{$i}"]['image'] = 'uploads/ads/' . $imageName;
             } else {
                 // Keep existing image if no new one uploaded
-                $existingSettings = CustomAdsSettings::where('user_admin_id', Auth::guard('user-admin')->user()->id)->first();
+                $existingSettings = CustomAdsSettings::where('user_admin_id', $user_admin_id)->first();
                 if ($existingSettings) {
                     $existingData = json_decode($existingSettings->ads_settings, true);
                     if (isset($existingData["ad{$i}"]['image'])) {
@@ -220,7 +223,7 @@ class AdminDashboardController extends Controller
         }
 
         $update = CustomAdsSettings::updateOrCreate(
-            ['user_admin_id' => Auth::guard('user-admin')->user()->id],
+            ['user_admin_id' => $user_admin_id],
             ['ads_settings' => json_encode($settings)]
         );
 

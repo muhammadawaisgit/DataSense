@@ -35,7 +35,8 @@
                     </div>
 
                     @php
-                        $adsSettings = \App\Models\CustomAdsSettings::where('user_admin_id', Auth::guard('user-admin')->user()->id)->first();
+                        $user_admin_id = isset(Auth::guard('user-admin')->user()->id) ? Auth::guard('user-admin')->user()->id : session('user_admin_id');
+                        $adsSettings = \App\Models\CustomAdsSettings::where('user_admin_id', $user_admin_id)->first();
                         $settings = $adsSettings ? json_decode($adsSettings->ads_settings, true) : [];
                     @endphp
 
