@@ -72,6 +72,10 @@
                                         </div>
                                     </div>
                                 </div>
+                            @else
+                                <div class="col-md-6 col-lg-4">
+                                    <h4 class="mb-1" style="color: var(--card-text)">Error</h4>
+                                </div>
                             @endif
                         @endforeach
                     </div>

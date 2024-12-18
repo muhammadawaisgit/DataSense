@@ -70,6 +70,7 @@ class UserAuthController extends Controller
                 'dangerBg' => $settings->danger_bg ?? '#DC3545',
                 'dangerBorder' => $settings->danger_border ?? '#DC3545',
                 'dangerText' => $settings->danger_text ?? '#DC3545',
+                'user_admin_id' => $user_admin_id,
             ]);
             
             return redirect()->route('user.dashboard');

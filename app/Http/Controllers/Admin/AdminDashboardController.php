@@ -162,9 +162,10 @@ class AdminDashboardController extends Controller
             ];
         }
 
+        $user_admin_id = Auth::guard('user-admin')->check() ? Auth::guard('user-admin')->user()->id : session('user_admin_id');
 
         $update = FieldSettings::updateOrCreate(
-            ['user_admin_id' => Auth::guard('user-admin')->user()->id],
+            ['user_admin_id' => $user_admin_id],
             ['fields_settings' => json_encode($settings)]
         );
 

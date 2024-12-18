@@ -35,7 +35,8 @@
                     </div>
 
                     @php
-                        $fieldSettings = \App\Models\FieldSettings::where('user_admin_id', Auth::guard('user-admin')->user()->id)->first();
+                        $user_admin_id = isset(Auth::guard('user-admin')->user()->id) ? Auth::guard('user-admin')->user()->id : session('user_admin_id');
+                        $fieldSettings = \App\Models\FieldSettings::where('user_admin_id', $user_admin_id)->first();
                         $settings = $fieldSettings ? json_decode($fieldSettings->fields_settings, true) : [];
                     @endphp
 
